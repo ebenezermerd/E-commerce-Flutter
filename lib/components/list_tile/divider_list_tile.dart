@@ -30,7 +30,7 @@ class DividerListTile extends StatelessWidget {
               ? SvgPicture.asset(
                   "assets/icons/miniRight.svg",
                   colorFilter: ColorFilter.mode(
-                      Theme.of(context).iconTheme.color!.withOpacity(0.4),
+                      Theme.of(context).iconTheme.color!.withAlpha(102),
                       BlendMode.srcIn),
                 )
               : null,
@@ -67,7 +67,8 @@ class DividerListTileWithTrilingText extends StatelessWidget {
             height: 24,
             width: 24,
             colorFilter: ColorFilter.mode(
-                Theme.of(context).iconTheme.color!, BlendMode.srcIn),
+                Theme.of(context).iconTheme.color!.withAlpha(102),
+                BlendMode.srcIn),
           ),
           title: Text(
             title,
@@ -82,7 +83,7 @@ class DividerListTileWithTrilingText extends StatelessWidget {
                 SvgPicture.asset(
                   "assets/icons/miniRight.svg",
                   colorFilter: ColorFilter.mode(
-                      Theme.of(context).iconTheme.color!.withOpacity(0.4),
+                      Theme.of(context).iconTheme.color!.withAlpha(102),
                       BlendMode.srcIn),
                 ),
               ],

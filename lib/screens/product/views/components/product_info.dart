@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+// import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:html_unescape/html_unescape.dart';
+import 'dart:convert';
 
 import '../../../../constants.dart';
 import 'product_availability_tag.dart';
@@ -22,6 +26,8 @@ class ProductInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Original description: $description");
+
     return SliverPadding(
       padding: const EdgeInsets.all(defaultPadding),
       sliver: SliverToBoxAdapter(
@@ -61,9 +67,9 @@ class ProductInfo extends StatelessWidget {
                   .copyWith(fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: defaultPadding / 2),
-            Text(
-              description,
-              style: const TextStyle(height: 1.4),
+            Html(
+              data: description,
+              
             ),
             const SizedBox(height: defaultPadding / 2),
           ],
@@ -72,3 +78,4 @@ class ProductInfo extends StatelessWidget {
     );
   }
 }
+

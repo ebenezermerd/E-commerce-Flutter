@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shop/components/dot_indicators.dart';
 import 'package:shop/constants.dart';
 import 'package:shop/route/route_constants.dart';
+import 'package:shop/core/services/storage_service.dart';
+import 'package:shop/core/injection/injection_container.dart' as di;
 
 import 'components/onbording_content.dart';
 
@@ -20,16 +22,16 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
     Onbord(
       image: "assets/Illustration/Illustration-0.png",
       imageDarkTheme: "assets/Illustration/Illustration_darkTheme_0.png",
-      title: "Find the item you’ve \nbeen looking for",
+      title: "Find the item you've \nbeen looking for",
       description:
-          "Here you’ll see rich varieties of goods, carefully classified for seamless browsing experience.",
+          "Here you'll see rich varieties of goods, carefully classified for seamless browsing experience.",
     ),
     Onbord(
       image: "assets/Illustration/Illustration-1.png",
       imageDarkTheme: "assets/Illustration/Illustration_darkTheme_1.png",
       title: "Get those shopping \nbags filled",
       description:
-          "Add any item you want to your cart, or save it on your wishlist, so you don’t miss it in your future purchases.",
+          "Add any item you want to your cart, or save it on your wishlist, so you don't miss it in your future purchases.",
     ),
     Onbord(
       image: "assets/Illustration/Illustration-2.png",
@@ -77,7 +79,8 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, logInScreenRoute);
+                    di.sl<StorageService>().setHasSeenOnboarding(true);
+                    Navigator.pushReplacementNamed(context, logInScreenRoute);
                   },
                   child: Text(
                     "Skip",

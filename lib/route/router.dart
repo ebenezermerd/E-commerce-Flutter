@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop/entry_point.dart';
-
+import 'package:shop/features/product/presentation/state/details/bloc/details_bloc.dart';
+import 'package:shop/screens/checkout/views/checkout_screen.dart';
 import 'screen_export.dart';
 
 // Yuo will get 50+ screens and more once you have the full template
@@ -130,9 +132,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     //   );
     case productDetailsScreenRoute:
       return MaterialPageRoute(
-        builder: (context) {
-          bool isProductAvailable = settings.arguments as bool? ?? true;
-          return ProductDetailsScreen(isProductAvailable: isProductAvailable);
+        builder: (context) {  
+          Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
+          bool isProductAvailable = arguments['isProductAvailable'] ?? true;
+          String productId = arguments['productId'] ?? '';
+          // context.read<DetailsBloc>().add(LoadProductDetails(productId: productId));
+          return ProductDetailsScreen(isProductAvailable: isProductAvailable, productId: productId);
         },
       );
     case productReviewsScreenRoute:
@@ -174,6 +179,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case searchScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const SearchScreen(),
+      );
+    case categoryScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const CategoryScreen(),
       );
     // case searchHistoryScreenRoute:
     //   return MaterialPageRoute(
@@ -302,7 +311,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     default:
       return MaterialPageRoute(
         // Make a screen for undefine
-        builder: (context) => const OnBordingScreen(),
+        // builder: (context) => const OnBordingScreen(),
+        builder: (context) => const CheckoutScreen(),
       );
   }
 }

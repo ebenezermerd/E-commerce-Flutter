@@ -38,7 +38,20 @@ class SecondaryProductCard extends StatelessWidget {
             aspectRatio: 1.15,
             child: Stack(
               children: [
-                NetworkImageWithLoader(image, radius: defaultBorderRadious),
+                Container(
+                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(defaultBorderRadious),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.blue.withOpacity(0.1),
+                        blurRadius: 100,
+                        offset: Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: NetworkImageWithLoader(image,
+                      radius: defaultBorderRadious),
+                ),
                 if (dicountpercent != null)
                   Positioned(
                     right: defaultPadding / 2,

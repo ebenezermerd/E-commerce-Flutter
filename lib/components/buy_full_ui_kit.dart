@@ -87,11 +87,11 @@ class _BuyFullKitState extends State<BuyFullKit> {
                     color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: primaryColor.withOpacity(0.4),
+                      color: primaryColor.withAlpha(102),
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withAlpha(26),
                         blurRadius: 20,
                         offset: const Offset(4, 10),
                       )
